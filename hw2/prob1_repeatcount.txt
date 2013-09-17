@@ -1,0 +1,38 @@
+JQI repeated 2 times at
+[88, 260]
+
+CIH repeated 2 times at
+[114, 134]
+
+XVO repeated 2 times at
+[142, 192]
+
+SLL repeated 2 times at
+[37, 97]
+
+HSA repeated 2 times at
+[216, 231]
+
+DSK repeated 2 times at
+[81, 201]
+
+AQF repeated 5 times at
+[68, 103, 153, 223, 243]
+
+JAQ repeated 2 times at
+[67, 222]
+
+WML repeated 2 times at
+[6, 186]
+
+LLP repeated 2 times at
+[8, 93]
+
+QFP repeated 2 times at
+[104, 224]
+
+OJA repeated 2 times at
+[56, 221]
+
+LLU repeated 2 times at
+[98, 238]

@@ -1,0 +1,24 @@
+Ciphertext: UVWWVX YZAYZ AX BX CXUVWWVU DZERZZ ZY AFGBH HGZ FVIJD UBKKY FZTDVW
+Total chars: 55
+A: 3 (5.45%)
+B: 3 (5.45%)
+C: 1 (1.82%)
+D: 3 (5.45%)
+E: 1 (1.82%)
+F: 3 (5.45%)
+G: 2 (3.64%)
+H: 2 (3.64%)
+I: 1 (1.82%)
+J: 1 (1.82%)
+K: 2 (3.64%)
+R: 1 (1.82%)
+T: 1 (1.82%)
+U: 4 (7.27%)
+V: 6 (10.91%)
+W: 5 (9.09%)
+X: 4 (7.27%)
+Y: 4 (7.27%)
+Z: 8 (14.55%)
+decree
+degree
+lessee

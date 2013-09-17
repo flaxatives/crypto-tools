@@ -1,0 +1,409 @@
+\documentclass[10pt,letterpaper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.65in]{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{fancyvrb}
+\usepackage{appendix}
+\usepackage{listings}
+\usepackage{color}
+
+
+\author{Marc Evangelista}
+\title{Problem Set 2}
+\begin{document}
+\begin{flushright}
+Marc Evangelista \\
+MATH 4175 \\ 
+CRN: 94509 \\
+Problem Set 2 \\
+Due: 2013/09/09
+\end{flushright}
+	All indexing in this document starts at 0 unless otherwise specified.
+\begin{enumerate}
+	\item The following was encrypted by the Vigenere method. Decrypt it. Carefully document your work–in general, more details are better than fewer details.
+	
+		\begin{verbatim}
+		XKJUROWMLLPXWZNPIMBVBQJCNOWXPCCHHVVFVSLLFVXHAZITYXOHULX 
+		QOJAXELXZXMYJAQFSTSRULHHUCDSKBXKNJQIDALLPQSLLUHIAQFPBPC
+		IDSVCIHWHWEWTHBTXRLJNRSNCIHUVFFUXVOUKJLJSWMAQFVJWJSDYLJ
+		OGJXDBOXAJULTUCPZMPLIWMLUBZXVOODYBAFDSKXGQFADSHXNXEHSAR
+		UOJAQFPFKNDHSAAFVULLUWTAQFRUPWJRSZXGPFUTJQIYNRXNYNTWMHC
+		\end{verbatim}
+
+	First, we find possible repeated strings within the ciphertext. We start off small, 
+	using a repetition string size of 3. Using a program to search every possible 
+	3-character string in the cipher (Listing B.1), we find that \verb|AQF| is repeated 5 times.
+	\par
+	Next, we analyze the positions of those repetitions. The indices at which \verb|AQF|
+	appear are at [68, 103, 153, 223, 243]. So we will calculate the difference between
+	these positions, then find a common factor. These common factors will be our possible
+	key sizes.
+	\begin{align*}
+			103 - 68 &= 35 \\
+			153 - 103 &= 50 \\
+			223 - 153 &= 70 \\
+			243 - 223 &= 20		
+	\end{align*}
+	Clearly, the GCD of these differences is 5, so we will choose that as our keysize.
+	Now we chop the ciphertext into rows of 5 characters each, so we will have 5 columns.
+	See Listing B.2 for the full listing.
+	
+	\begin{verbatim}
+	XKJUR
+	OWMLL
+	PXWZN
+	PIMBV
+	BQJCN
+	...
+	RXNYN
+	TWMHC
+	\end{verbatim}
+	
+	Each column corresponds to a simple Caesar shift, so we can treat each column as its
+	own individual cipher to solve. So we can apply frequency analysis techniques on each
+	individual column, and make educated guesses on the amount of shift used.
+	\par 
+	First, we will count the letter frequency for the first column. See Listing B.3.
+	\begin{verbatim}
+	Column 0: XOPPBOCFFZOQEMFUCXIPUFIIETNIFUSFSOBUPIBOFGSEUFDFUFJGJRT
+	B: 3 (5.45%)
+	C: 2 (3.64%)
+	D: 1 (1.82%)
+	E: 3 (5.45%)
+	F: 10 (18.18%)
+	G: 2 (3.64%)
+	I: 5 (9.09%)
+	J: 2 (3.64%)
+	M: 1 (1.82%)
+	N: 1 (1.82%)
+	O: 5 (9.09%)
+	P: 4 (7.27%)
+	Q: 1 (1.82%)
+	R: 1 (1.82%)
+	S: 3 (5.45%)
+	T: 2 (3.64%)
+	U: 6 (10.91%)
+	X: 2 (3.64%)
+	Z: 1 (1.82%)
+	\end{verbatim}
+	
+	Since F is the most common letter, we will assume that it corresponds to the plaintext
+	letter E, the most common letter in English. The distance from F to E can be 
+	calculated using the formula  $(char_{plain} - char_{cipher})\ mod\ 26$. In other words, that distance
+	mod 26 is the amount of letters to shift from F to E. So,
+		\begin{align*}
+		('E' - 'F')\ mod\ 26 &= (4 - 5) mod 26 \\
+		&= -1 mod 26 \\
+		&= 25 \\
+		\end{align*}
+
+	So, shifting F by 25 will give us E. Applying this logic to each column gives us the 
+	following table:
+	
+	\begin{center}
+	\begin{tabular}{ | c | c | c | c | c  c  c  c |}
+	\hline
+	& & & & Distance To & & &\\ \hline 
+	Col. & Most Freq. Char & Freq & Index & E & T & A & O \\ \hline
+	0 & F & 18\% & 5 & 25 & 14 & 21 & 9 \\ 
+	1 & H & 14\% & 7 & 23 & 12 & 19 & 7 \\
+	2 & S & 16\% & 18 & 12 & 1 & 8 & 22 \\
+	3 & L & 18\% & 11 & 19 & 8 & 15 & 3 \\
+	4 & X & 12\% & 23 & 7 & 22 & 3 & 17 \\
+	\hline
+	\end{tabular}
+	\end{center}
+	Included are distances to other most common letters. Now we assume that all of the
+	most frequent letters were decrypted from E. So shifting each column by its
+	corresponding distance to E as seen in the table, we get:
+	
+	\begin{verbatim}
+	Column 0 shifted by 25: 
+	wnooanbeeynpdletbwhotehhdsmhetrernatohanefrdteceteifiqs
+	Column 1 shifted by 23: 
+	htufntessfelivpiahanemaetuoerhtsadliwtwaaneelmestoomnut
+	Column 2 shifted by 12: 
+	vyiyvjtejfgvjvftezmeuneifdegjvyvkvjfyyjkerjevregfgeruzy
+	Column 3 shifted by 19: 
+	nesuvioearetstladceetioaaegooetpeqtnieoudtgttdtetisnrra
+	Column 4 shifted by 07: 
+	ysucujcsheeeexybixssxjjdiqjmvqxqqkqjsbvhekeyxuhsxdeauuj
+	\end{verbatim}
+	or alternatively, in actual columns (Listing B.4):
+	\begin{verbatim}
+	whvny
+	ntyes
+	ouisu
+	ofyuc
+	...
+	quzru
+	styaj
+	\end{verbatim}
+	
+	Now we can try exhausting the search with each possible shift, giving us $25^5$
+	possibilities to try. We would ideally start with the shifts from the more
+	common letters in the table. Instead, we can analyze the text from the E shifts that
+	we just tried.
+	\par
+	The first 6 characters, \verb|whvnyv|, look like the words 'when in' or 'when on'.
+	So we will assume $w$, $h$, and $n$, are all correct, along with their corresponding
+	column. That leaves two columns left to decipher: 2 and 4.
+	\par
+	In Column 2, our original ciphertext \verb|J| will need to be shifted to \verb|e|,
+	because 'when' occurs in both our suspected plaintext phrases. Using our earlier
+	formula:
+	\begin{align*}
+		(char_{plain} - char_{cipher})\ mod\ 26 &= ('E' - 'J')\ mod\ 26 \\
+		 &= (4 - 9) mod 26 \\
+		&= -5\ mod\ 26 \\
+		&= 21 \\
+	\end{align*}
+	We will shift Column 2 by 21. \\
+	Similarly for Column 4, we shift \verb|R| to both \verb|i| and \verb|o| as in 'in' and 'on' respectively. The resulting shifts are 17 and 23 respectively. So, we get
+	\par
+	\begin{verbatim}
+	R -> i
+	Column 0 shifted by 25: wnooanbeeynpdletbwhotehhdsmhetrernatohanefrdteceteifiqs
+	Column 1 shifted by 23: htufntessfelivpiahanemaetuoerhtsadliwtwaaneelmestoomnut
+	Column 2 shifted by 21: ehrhescnsopeseocnivndwnromnpsehetesohhstnasneanpopnadih
+	Column 3 shifted by 19: nesuvioearetstladceetioaaegooetpeqtnieoudtgttdtetisnrra
+	Column 4 shifted by 17: icemetmcroooohilshcchttnsatwfahaauatclfrouoiherchnokeet
+	
+	R -> o
+	Column 0 shifted by 25: wnooanbeeynpdletbwhotehhdsmhetrernatohanefrdteceteifiqs
+	Column 1 shifted by 23: htufntessfelivpiahanemaetuoerhtsadliwtwaaneelmestoomnut
+	Column 2 shifted by 21: ehrhescnsopeseocnivndwnromnpsehetesohhstnasneanpopnadih
+	Column 3 shifted by 19: nesuvioearetstladceetioaaegooetpeqtnieoudtgttdtetisnrra
+	Column 4 shifted by 23: oikskzsixuuuunoryniinzztygzclgnggagzirlxuauonkxintuqkkz
+	\end{verbatim}
+	The columns above are written horizontally for space.\\
+	We can clearly see that shifting Column 3 by 19 gives us more legible text. So
+	we assume we shift Columns 0 to 4 by (25, 23, 21, 19, 17) respectively. Now we
+	just have to concatenate each row of each Column for our final plaintext:
+	
+	\begin{verbatim}
+	wheninthecourseofhumaneventsitbecomesnecessaryforonepeo
+	pletodissolvethepoliticalbandswhichhaveconnectedthemwit
+	hanotherandtoassumeamongthepowersoftheearththeseparatea
+	ndequalstationtowhichthelawsofnatureandofnaturesgodenti
+	tlethemadecentrespecttotheopinionsofmankindrequiresthat
+	\end{verbatim}
+
+	We were fortunate that 3 of 5 guesses were correct, allowing us to guess some words.
+	In the case that our initial guesses were not correct and could not guess at
+	words or patterns, we would try exhausting all the shifts, starting with the
+	more frequent letter mappings like the chart.
+	\\
+	
+	
+	
+	\item Suppose you have a language with only the three letters $a$, $b$, $c$, and
+	they occur with frequencies 0.7, 0.2, and 0.1, respectively. The following ciphertext
+	was encrypted by the Vigenere method (shifts are mod 3 instead of mod 26):
+	
+	\begin{center}
+	\verb|ABCBABBBAC|
+	\end{center}
+	
+	You are told that the key length is 1, 2, or 3. Show that the key length is
+	probably 2, and determine the most probable key.
+	Again, document your work.
+	\par
+	We will use the Friedman test to determine the probably key length. This is modeled
+	by:
+	$$ \frac{\kappa_p - \kappa_r}{\kappa_o - \kappa_r} $$
+	where $\kappa_p$ is the index of coincidence of the language, $\kappa_r = \frac{1}{length_{alphabet}}$, $\kappa_o$ is theapproximate IC using a sample.
+	
+	First, we determine the index of coincidence $\kappa_p$ for this language:
+	\begin{align*}
+	IC = \kappa_p &= \sum\limits_{j=0}^{2} p_j^2 \\
+	&= 0.7^2 + 0.2^2 + 0.1^2 \\
+	&= 0.54
+	\end{align*}
+
+	
+	Next, want to find $\kappa_o$. This is modeled as:
+	\begin{align*}
+	\kappa_o &= \sum\limits_{j=0}^{2} \frac{f_j(f_j - 1)}{N(N-1)}
+	\end{align*}
+	where $f_j$ is the frequency of the $j$th character in the sample, and $N$ is the
+	sample size. We know $N=10$, but we also need to count the frequencies of each
+	character. Following is a frequency count of our sample:
+	\begin{verbatim}
+	$ frequency.py ABCBABBBAC
+	A: 3 (30.00%)
+	B: 5 (50.00%)
+	C: 2 (20.00%)
+	\end{verbatim}
+	
+	Now we can plug in our values to find $\kappa_o$.
+	\begin{align*}
+	\kappa_o &= \sum\limits_{j=0}^{2} \frac{f_j(f_j - 1)}{N(N-1)} \\
+	&= \frac{3(3-1)}{10(10-1)} + \frac{5(5-1)}{10(10-1)} + \frac{2(2-1)}{10(10-1)} \\
+	&= \frac{3(2)+5(4)+2(1)}{90} \\ 
+	&= 0.311
+	\end{align*}
+	
+	Additionally, $\kappa_r = \frac{1}{3} = 0.333$. Plugging them back into the formula for the Friedman test,
+	\begin{align*}
+	\frac{\kappa_p - \kappa_r}{\kappa_o - \kappa_r} &= \frac{0.54 - 0.333}{0.311-0.333}
+	\\ &= -9.409
+	\end{align*}
+	
+	$-9.409$ is obviously not a valid keylength. This may be due to our small sample size.
+	\par
+	Instead, we can try the Kasiski examination. Here, we look at repeated substrings
+	within our ciphertext. Following is a table of repeated strings, their positions, and
+	differences in positions.
+	
+	\begin{center}
+	\begin{tabular}{ | c | c | l |}
+	\hline
+	Substring & Position & Difference   \\ \hline
+	AB & 0, 4 & $4-0=4$ \\
+	BA & 3, 7 & $7-3=4$ \\
+	BB & 5, 6 & $6-5=1$ \\
+	\hline
+	\end{tabular}
+	\end{center}
+	
+	\verb|BB|'s repetition probably less significance because it
+	has a position difference of 1, which is the GCD for any prime number. Instead, we
+	look at the other substrings.
+	Looking at the differences of strings \verb|AB| and \verb|BA|, we see that the GCD is
+	4. However, 4 is not within our probable keylengths, so we use the next greatest
+	common denominator, 2, as our most probably keylength.
+	
+	Now we can split the ciphertext into columns, then find the shift of each column with
+	frequency analysis.
+	So,
+	\begin{verbatim}
+	AB
+	CB
+	AB
+	BB
+	AC
+	
+	$ frequency.py ACABA
+	A: 3 (60.00%)
+	B: 1 (20.00%)
+	C: 1 (20.00%)
+	
+	$ frequency.py BBBBC
+	B: 4 (80.00%)
+	C: 1 (20.00%)
+	\end{verbatim}
+	
+	Again, we will assume the most frequent letter in the column corresponds to 
+	the most frequent letter found in the language (in this case, $a$).
+	
+	\begin{center}
+	\begin{tabular}{ | c | c | c | c |}
+	\hline
+	Col & Freq. Char & Distance from $a$ & Key Char \\ \hline
+	0 & $A$ & 0  & a\\
+	1 & $B$ & 1 & b\\
+	\hline
+	\end{tabular}
+	
+	\end{center}
+	Note that the distance column is different from the one in Problem 1.
+	\par	
+	 This is 
+	distance from the frequent letter, not to.
+	Concatenating the Key Char column gives us the most probable key $ab$.
+	
+	
+	
+	\item The ciphertext \verb|GEXZDS| was encrypted by a Hill cipher with a $2 \times 2$ 		encryption matrix M. The plaintext is \verb|solved|. 
+	Find the encryption matrix M.
+	\par
+	First, we split both the plaintext and corresponding ciphertext into chunks of 2,
+	because our key is $2 \times 2$. So we have \verb|so, lv, ed| and \verb|GE, XZ, DS|
+	respectively. If we let $K = \begin{pmatrix}
+	a & b \\ c & d
+	\end{pmatrix}$ be our encryption key, we can write this cipher as
+	$$	
+	K	
+	\begin{pmatrix}
+	's' \\ 'o'
+	\end{pmatrix} = 
+	\begin{pmatrix}
+	'G' \\ 'E'
+	\end{pmatrix}
+	$$
+	So the key multiplied by a vector with our two-character plaintext chunk gives us the
+	ciphertext chunk. If we use square matrices, we can then use the inverse of our
+	plaintext matrix to solve for $K$. Let $P$ be our plaintext matrix and $C$ be our
+	ciphertext matrix. So,
+	\begin{align*}
+	KP &= C \\
+	KPP^{-1} &= CP^{-1} \\
+	K &= CP^{-1}
+	\end{align*}
+
+	We will use the pairs \verb|lv| and \verb|ed| because they are smaller integers to
+	work with. So,
+	\begin{align*}
+		K \begin{pmatrix} 'l' & 'e' \\ 'v' & 'd' \end{pmatrix} &=
+	\begin{pmatrix} 'X' & 'D' \\ 'Z' & 'S'	\end{pmatrix}
+	\\
+	K \begin{pmatrix} 11 & 4 \\ 21 & 3	\end{pmatrix} &=
+	\begin{pmatrix} 23 & 3 \\ 25 & 18	\end{pmatrix}
+	\end{align*}
+	Now we find the inverse of $\begin{pmatrix} 11 & 4 \\ 21 & 3 \end{pmatrix}$.
+	\begin{align*}
+	\begin{pmatrix} 11 & 4 \\ 21 & 3	\end{pmatrix}^{-1} &= 
+	\frac{1}{-51}\begin{pmatrix}
+	3 & -4 \\ -21 & 11 
+	\end{pmatrix} (mod\ 26)	 \\
+	&= \begin{pmatrix}
+	3 & 22 \\ 5 & 11
+	\end{pmatrix} (mod\ 26)	
+	\end{align*}
+	
+	Now plug it back in to solve for K.
+		\begin{align*}
+	K \begin{pmatrix} 11 & 4 \\ 21 & 3	\end{pmatrix} &=
+	\begin{pmatrix} 23 & 3 \\ 25 & 18	\end{pmatrix} \\
+		K \begin{pmatrix} 11 & 4 \\ 21 & 3	\end{pmatrix}
+		\begin{pmatrix} 11 & 4 \\ 21 & 3	\end{pmatrix}^{-1}		 &=
+	\begin{pmatrix} 23 & 3 \\ 25 & 18	\end{pmatrix} \begin{pmatrix} 11 & 4 \\ 21 & 3	\end{pmatrix} 
+	\\ K &= \begin{pmatrix}
+	6 & 19 \\ 9 & 20
+	\end{pmatrix}
+	\end{align*}
+
+	$K = \begin{pmatrix}
+	6 & 19 \\ 9 & 20
+	\end{pmatrix}$ is our encryption key.
+		
+\end{enumerate}
+
+\begin{appendices}
+\chapter{Code Listings}
+\lstinputlisting[language=Python, 
+				breaklines=true,
+				numbers=left,
+				caption=problem1.py,
+				label={problem1.py}]{problem1.py}
+\lstinputlisting[language=Python, 
+				breaklines=true,
+				numbers=left,
+				caption=letter.py,
+				label={letter.py}]{letter.py}
+\lstinputlisting[language=Python, 
+				breaklines=true,
+				numbers=left,
+				caption=frequency.py,
+				label={frequency.py}]{frequency.py}
+\chapter{Program Output}
+\lstinputlisting[caption=Substring Count]{prob1_repeatcount.txt}
+\lstinputlisting[caption=Full Ciphertext as Columns]{prob1_ciphertextcolumns.txt}
+\lstinputlisting[caption=Column Freq. Count]{prob1_freqcount.txt}
+\lstinputlisting[caption=Shift All Columns According to E]{prob1_columnshiftE.txt}
+\lstinputlisting[caption=Full Successful Run]{prob1_full.txt}
+\end{appendices}
+\end{document}

@@ -1,0 +1,262 @@
+XKJUROWMLLPXWZNPIMBVBQJCNOWXPCCHHVVFVSLLFVXHAZITYXOHULX
+QOJAXELXZXMYJAQFSTSRULHHUCDSKBXKNJQIDALLPQSLLUHIAQFPBPC
+IDSVCIHWHWEWTHBTXRLJNRSNCIHUVFFUXVOUKJLJSWMAQFVJWJSDYLJ
+OGJXDBOXAJULTUCPZMPLIWMLUBZXVOODYBAFDSKXGQFADSHXNXEHSAR
+UOJAQFPFKNDHSAAFVULLUWTAQFRUPWJRSZXGPFUTJQIYNRXNYNTWMHC
+
+WML repeated 2 times at
+[6, 186]
+
+SLL repeated 2 times at
+[37, 97]
+
+AQF repeated 5 times at
+[68, 103, 153, 223, 243]
+
+XVO repeated 2 times at
+[142, 192]
+
+QFP repeated 2 times at
+[104, 224]
+
+LLU repeated 2 times at
+[98, 238]
+
+LLP repeated 2 times at
+[8, 93]
+
+DSK repeated 2 times at
+[81, 201]
+
+HSA repeated 2 times at
+[216, 231]
+
+JAQ repeated 2 times at
+[67, 222]
+
+OJA repeated 2 times at
+[56, 221]
+
+CIH repeated 2 times at
+[114, 134]
+
+JQI repeated 2 times at
+[88, 260]
+Judging from the indices of the repetitions,    the GCD is probably what? 5
+
+XKJUR
+OWMLL
+PXWZN
+PIMBV
+BQJCN
+OWXPC
+CHHVV
+FVSLL
+FVXHA
+ZITYX
+OHULX
+QOJAX
+ELXZX
+MYJAQ
+FSTSR
+ULHHU
+CDSKB
+XKNJQ
+IDALL
+PQSLL
+UHIAQ
+FPBPC
+IDSVC
+IHWHW
+EWTHB
+TXRLJ
+NRSNC
+IHUVF
+FUXVO
+UKJLJ
+SWMAQ
+FVJWJ
+SDYLJ
+OGJXD
+BOXAJ
+ULTUC
+PZMPL
+IWMLU
+BZXVO
+ODYBA
+FDSKX
+GQFAD
+SHXNX
+EHSAR
+UOJAQ
+FPFKN
+DHSAA
+FVULL
+UWTAQ
+FRUPW
+JRSZX
+GPFUT
+JQIYN
+RXNYN
+TWMHC
+Column 0: XOPPBOCFFZOQEMFUCXIPUFIIETNIFUSFSOBUPIBOFGSEUFDFUFJGJRT
+B: 3 (5.45%)
+C: 2 (3.64%)
+D: 1 (1.82%)
+E: 3 (5.45%)
+F: 10 (18.18%)
+G: 2 (3.64%)
+I: 5 (9.09%)
+J: 2 (3.64%)
+M: 1 (1.82%)
+N: 1 (1.82%)
+O: 5 (9.09%)
+P: 4 (7.27%)
+Q: 1 (1.82%)
+R: 1 (1.82%)
+S: 3 (5.45%)
+T: 2 (3.64%)
+U: 6 (10.91%)
+X: 2 (3.64%)
+Z: 1 (1.82%)
+Column 1: KWXIQWHVVIHOLYSLDKDQHPDHWXRHUKWVDGOLZWZDDQHHOPHVWRRPQXW
+D: 6 (10.91%)
+G: 1 (1.82%)
+H: 8 (14.55%)
+I: 2 (3.64%)
+K: 3 (5.45%)
+L: 3 (5.45%)
+O: 3 (5.45%)
+P: 3 (5.45%)
+Q: 4 (7.27%)
+R: 3 (5.45%)
+S: 1 (1.82%)
+U: 1 (1.82%)
+V: 4 (7.27%)
+W: 7 (12.73%)
+X: 3 (5.45%)
+Y: 1 (1.82%)
+Z: 2 (3.64%)
+Column 2: JMWMJXHSXTUJXJTHSNASIBSWTRSUXJMJYJXTMMXYSFXSJFSUTUSFINM
+A: 1 (1.82%)
+B: 1 (1.82%)
+F: 3 (5.45%)
+H: 2 (3.64%)
+I: 2 (3.64%)
+J: 8 (14.55%)
+M: 6 (10.91%)
+N: 2 (3.64%)
+R: 1 (1.82%)
+S: 9 (16.36%)
+T: 5 (9.09%)
+U: 4 (7.27%)
+W: 2 (3.64%)
+X: 7 (12.73%)
+Y: 2 (3.64%)
+Column 3: ULZBCPVLHYLAZASHKJLLAPVHHLNVVLAWLXAUPLVBKANAAKALAPZUYYH
+A: 10 (18.18%)
+B: 2 (3.64%)
+C: 1 (1.82%)
+H: 5 (9.09%)
+J: 1 (1.82%)
+K: 3 (5.45%)
+L: 10 (18.18%)
+N: 2 (3.64%)
+P: 4 (7.27%)
+S: 1 (1.82%)
+U: 3 (5.45%)
+V: 5 (9.09%)
+W: 1 (1.82%)
+X: 1 (1.82%)
+Y: 3 (5.45%)
+Z: 3 (5.45%)
+Column 4: RLNVNCVLAXXXXQRUBQLLQCCWBJCFOJQJJDJCLUOAXDXRQNALQWXTNNC
+A: 3 (5.45%)
+B: 2 (3.64%)
+C: 6 (10.91%)
+D: 2 (3.64%)
+F: 1 (1.82%)
+J: 5 (9.09%)
+L: 6 (10.91%)
+N: 5 (9.09%)
+O: 2 (3.64%)
+Q: 6 (10.91%)
+R: 3 (5.45%)
+T: 1 (1.82%)
+U: 2 (3.64%)
+V: 2 (3.64%)
+W: 2 (3.64%)
+X: 7 (12.73%)
+Column 0 shifted by 25: 
+wnooanbeeynpdletbwhotehhdsmhetrernatohanefrdteceteifiqs
+Column 1 shifted by 23: 
+htufntessfelivpiahanemaetuoerhtsadliwtwaaneelmestoomnut
+Column 2 shifted by 21: 
+ehrhescnsopeseocnivndwnromnpsehetesohhstnasneanpopnadih
+Column 3 shifted by 19: 
+nesuvioearetstladceetioaaegooetpeqtnieoudtgttdtetisnrra
+Column 4 shifted by 17: 
+icemetmcroooohilshcchttnsatwfahaauatclfrouoiherchnokeet
+
+wheni
+nthec
+ourse
+ofhum
+aneve
+ntsit
+becom
+esnec
+essar
+yforo
+nepeo
+pleto
+disso
+lveth
+epoli
+tical
+bands
+which
+havec
+onnec
+tedth
+emwit
+hanot
+heran
+dtoas
+sumea
+mongt
+hepow
+ersof
+theea
+rthth
+esepa
+ratea
+ndequ
+alsta
+tiont
+owhic
+hthel
+awsof
+natur
+eando
+fnatu
+resgo
+denti
+tleth
+emade
+centr
+espec
+ttoth
+eopin
+ionso
+fmank
+indre
+quire
+sthat
+
+plain is:
+wheninthecourseofhumaneventsitbecomesnecessaryforonepeo
+pletodissolvethepoliticalbandswhichhaveconnectedthemwit
+hanotherandtoassumeamongthepowersoftheearththeseparatea
+ndequalstationtowhichthelawsofnatureandofnaturesgodenti
+tlethemadecentrespecttotheopinionsofmankindrequiresthat
