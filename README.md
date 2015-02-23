@@ -9,6 +9,9 @@ at Virginia Tech. Many scripts can be used on the command line
 and as a module. There's some good stuff in here that can actually
 be useful outside of class, like the letter frequency count.
 
+Also, much of the earlier stuff is terribly documented. I need to go back
+through some notes and see what they actually did.
+
 Contents
 --------
 
@@ -48,15 +51,19 @@ Can be used from the command line like so:
         14: o
 
 + hw3/ - contains automated analysis of linear recurrence and linear
-feedback shift registers
-
+  feedback shift registers
 + hw3/vectors.py - a program that finds the period of repetition of
-a linear recurrence for all 32 permutations of a 5 bit initialization vector
-
+  a linear recurrence for all 32 permutations of a 5 bit initialization vector
 + hw3/hankel.py - a program that uses numpy to calculate probable length
-of a linear recurrence given a bitstream. It also calculates the coefficients
-for the resulting linear recurrence equation. Also contains some functions
-for creating hankel matrices.
+  of a linear recurrence given a bitstream. It also calculates the coefficients
+  for the resulting linear recurrence equation. Also contains some functions
+  for creating hankel matrices.
++ aes/ - contains an implementation of the AES cipher
++ enigma/ - finds cycle decompositions with the enigma cipher
++ entropy.py - a script to calculate entropy of a string of bits
++ hadamard.py - a script to generate hamard matrices
++ ham74.py - an implementation of the Hamming(7,4) encoding
++ spn/ - an implementation of a substitution-permutation network. 
 
 TODO
 ------------
@@ -65,4 +72,9 @@ a usable package in products. But for now, they are sorted by
 homework assignments, at least until I have time to put them together
 into a package.
 
-Also, I don't think I've added hw3/hankel.py. Yet.
+Disclaimer
+----------
+These are really only for educational purposes. Don't cheat and use them for
+homework, because some may not even be right.
+Many of these are correct implementations, but I wouldn't be surprised if there
+are any mistakes. Let me know if there are mistakes and I'll fix them.
